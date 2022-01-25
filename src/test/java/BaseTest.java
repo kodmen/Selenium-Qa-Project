@@ -9,17 +9,21 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class BaseTest {
    protected WebDriver driver ;
    protected LoginPage loginPage;
-    //static String browser = System.getProperty("browser");
+    static String browser = System.getProperty("browser");
+
 
     @BeforeAll
     public static void setUp(){
-        WebDriverManager.chromedriver().setup();
+        if (browser.equals("firefox"))
+        WebDriverManager.firefoxdriver().setup();
+        else
+            WebDriverManager.chromedriver().setup();
         System.out.println("Test initiated.");
     }
 
     @BeforeEach
     public void beforeMethod(){
-        driver =  new ChromeDriver();
+        driver =  getDriver(browser);
         loginPage = new LoginPage(driver);
     }
 
@@ -28,16 +32,16 @@ public class BaseTest {
         driver.quit();
     }
 
-//    @AfterAll
-//    public static void tearDown(){
-//        System.out.println("Test finished.");
-//        driver.quit();
-//    }
+    public WebDriver getDriver(String browser) {
+        if (browser.equals("firefox"))
+                 return new FirefoxDriver();
+            else
+                return new ChromeDriver();
+    }
 
-   public void login(String userName,String pass){
+    public void login(String userName, String pass){
        loginPage.setUserName(userName);
        loginPage.setPassword(pass);
        loginPage.clickButton();
-
    }
 }
