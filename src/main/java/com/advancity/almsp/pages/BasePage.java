@@ -1,4 +1,4 @@
-package com.advancity.almsp;
+package com.advancity.almsp.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage {
 
     protected WebDriver driver ;
-    String baseUrl = "https://staging.almscloud.com/almsp";
+    protected String baseUrl = "https://staging.almscloud.com/almsp";
 
     public BasePage(WebDriver driver){
         this.driver = driver ;
@@ -24,11 +24,12 @@ public class BasePage {
     }
 
     public void type(By locator , String text){
+        waitFor(locator);
         find(locator).sendKeys(text);
     }
 
     public void waitFor(By locator){
-        WebDriverWait wait = new WebDriverWait(driver , 5);
+        WebDriverWait wait = new WebDriverWait(driver , 10);
         wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
