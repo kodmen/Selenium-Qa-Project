@@ -1,9 +1,9 @@
 package com.advancity.almsp.pages;
 
-import com.advancity.almsp.contains.LoginContain;
+import com.advancity.almsp.constants.LoginConstant;
 import org.openqa.selenium.WebDriver;
 
-public class LoginPage extends LoginContain {
+public class LoginPage extends LoginConstant {
 
     public LoginPage(WebDriver driver) {
         super(driver);

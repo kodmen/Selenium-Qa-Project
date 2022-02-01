@@ -12,7 +12,6 @@ public class TestLoginPage extends BaseTest{
 
         login(userName,pass);
         loginPage.waitLogo();
-        String expectedUrl = driver.getCurrentUrl();
         loginPage.goToProfile();
 
         Assertions.assertEquals(userName,loginPage.getUserName(),"username not correct");

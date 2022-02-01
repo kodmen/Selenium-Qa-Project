@@ -16,13 +16,19 @@ public class BaseTest {
     public static void setUp(){
 
         if (LocalProperties.getGridBrowser().equals("firefox"))
-            WebDriverManager.firefoxdriver().setup();
+            System.setProperty("webdriver.gecko.driver","src/main/java/com/advancity/almsp/drivers/geckodriver");
         else
-            WebDriverManager.chromedriver().setup();
+            System.setProperty("webdriver.chrome.driver","src/main/java/com/advancity/almsp/drivers/chromedriver");
+
+//        if (LocalProperties.getGridBrowser().equals("firefox"))
+//            WebDriverManager.firefoxdriver().setup();
+//        else
+//            WebDriverManager.chromedriver().setup();
 
 
         System.out.println("Test initiated.");
     }
+
 
     @BeforeEach
     public void beforeMethod(){
@@ -44,4 +50,5 @@ public class BaseTest {
        loginPage.setPassword(pass);
        loginPage.clickButton();
    }
+
 }
