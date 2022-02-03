@@ -1,3 +1,4 @@
+import com.advancity.almsp.utility.LocalProperties;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
@@ -6,9 +7,8 @@ public class TestLoginPage extends BaseTest{
 
     @Test
     public void correctLoginSenerio(){
-        String userName = "yuktesti1";
-        String pass = "yuktesti1";
-        String actualUrl = "https://staging.almscloud.com/almsp/u/Home/Index";
+        String userName = LocalProperties.getUserName();
+        String pass = LocalProperties.getPassword();
 
         login(userName,pass);
         loginPage.waitLogo();
@@ -20,8 +20,8 @@ public class TestLoginPage extends BaseTest{
     @Test
     public void nullUsernameLoginSenerio(){
         String userName = "";
-        String pass = "yuktesti1";
-        String actualUrl = "https://staging.almscloud.com/almsp";
+        String pass = LocalProperties.getPassword();
+        String actualUrl = LocalProperties.getUrl();
 
         login(userName,pass);
         String expectedUrl = driver.getCurrentUrl();;
@@ -31,9 +31,9 @@ public class TestLoginPage extends BaseTest{
 
     @Test
     public void nullPasswordLoginSenerio(){
-        String userName = "yuktesti1";
+        String userName = LocalProperties.getUserName();
         String pass = "";
-        String actualUrl = "https://staging.almscloud.com/almsp";
+        String actualUrl = LocalProperties.getUrl();
 
         login(userName,pass);
         String expectedUrl = driver.getCurrentUrl();;

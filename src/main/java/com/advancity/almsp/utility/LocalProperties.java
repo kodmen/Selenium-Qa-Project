@@ -37,4 +37,35 @@ public class LocalProperties {
         }
     }
 
+    public static String getUserName() {
+        if (System.getProperty("kullanici") != null) {
+            return System.getProperty("kullanici");
+        } else {
+            return prop.getProperty("kullanici");
+        }
+    }
+
+    public static String getPassword() {
+        if (System.getProperty("sifre") != null) {
+            return System.getProperty("sifre");
+        } else {
+            return prop.getProperty("sifre");
+        }
+    }
+
+    public static String getUrl() {
+        if (System.getProperty("webSayfasi") != null) {
+            return System.getProperty("webSayfasi");
+        } else {
+            return prop.getProperty("webSayfasi");
+        }
+    }
+
+    public static String getProfilUrl() {
+        if (System.getProperty("profil") != null) {
+            return System.getProperty("profil");
+        } else {
+            return prop.getProperty("profil");
+        }
+    }
 }
